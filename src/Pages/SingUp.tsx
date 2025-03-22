@@ -2,18 +2,15 @@ import { Link } from "react-router-dom";
 import { FaHandHoldingMedical } from "react-icons/fa";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
-
 interface IFormInput {
     fullName: string;
     email: string;
     password: string;
     confirmPassword: string;
 }
-
 interface SignUpProps {
     setIsAuthenticated: (isAuthenticated: boolean) => void;
 }
-
 const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
     const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
 
@@ -31,7 +28,6 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
             console.error("SignUp error:", error);
         }
     };
-
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="bg-white p-8 rounded-2xl shadow-lg w-96">
