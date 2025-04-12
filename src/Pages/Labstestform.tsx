@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../Context/ContextApi";
- 
 interface Order {
     id: string;
     amount: number;
-    currency: string;
-     
+    currency: string; 
     
 }
-
-  
 const LabsTestForm: React.FC = () => {
     const [isProcessing, setIsProcessing] = useState<boolean>(false);
     const [isRazorpayLoaded, setIsRazorpayLoaded] = useState<boolean>(false);
@@ -22,7 +18,6 @@ const LabsTestForm: React.FC = () => {
         "CBC": 500, "LFT": 700, "Lipid Profile": 1000, "TFT": 800,
         "KFT": 600, "Blood Sugar": 300, "COVID-19 Test": 1200, "Dengue Test": 1100
     };
-
     // Load Razorpay script
     useEffect(() => {
         const existingScript = document.querySelector('script[src="https://checkout.razorpay.com/v1/checkout.js"]');
@@ -55,22 +50,17 @@ const LabsTestForm: React.FC = () => {
             alert('Payment system not ready. Please try again.');
             return;
         }
-
         if (selectedTests.length === 0) {
             alert("Please select at least one test before proceeding.");
             return;
         }
-
         setIsProcessing(true);
-
         try {
             const res = await axios.post<{ order: Order }>('http://localhost:5000/payment/checkout', {
                 name: 'Lab Test Checkout',
                 amount: totalPrice * 100, // Convert to paise for INR
             });
-
             const { order } = res.data;
-
             const options = {
                 key: 'rzp_test_YbBZ9UxIkaF0Pf', // Replace with your Razorpay Test Key
                 amount: order.amount,
@@ -108,9 +98,6 @@ const LabsTestForm: React.FC = () => {
             setIsProcessing(false);
         }
     };
-
-    
-
     return (
         <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
             <h2 className="text-2xl font-semibold text-center mb-6">Patient Lab Test Form</h2>

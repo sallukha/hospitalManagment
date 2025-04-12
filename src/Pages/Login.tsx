@@ -3,19 +3,17 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
-
 interface IFormInput {
   email: string;
   password: string;
 }
-
 const Login = ({ setIsAuthenticated }: { setIsAuthenticated: (isAuthenticated: boolean) => void }) => {
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
-      const res = await axios.post("http://localhost:3000/log_in", data);
+      const res = await axios.post(" http://localhost:4000/log_in", data);
       console.log(res.data);
       setIsAuthenticated(true);
       navigate("/");
