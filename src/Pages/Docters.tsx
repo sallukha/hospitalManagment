@@ -41,7 +41,7 @@ const Doctors = () => {
                         placeholder="Search doctor..."
                         value={searchQuery}
                         onChange={handleSearchChange}
-                        className="w-full outline-none px-2 bg-transparent text-lg"
+                        className="   md:w-full outline-none px-2 bg-transparent text-lg"
                     />
                 </div>
             </div>
