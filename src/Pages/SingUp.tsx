@@ -27,9 +27,8 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
       setApiError("Passwords do not match");
       return;
     }
-
     try {
-      const res = await axios.post("https://node-backend3-f4vr.vercel.app/sign_up", {
+      const res = await axios.post("https://node-backend3-f4vr.vercel.app/signup", {
         fullName: data.fullName,
         email: data.email,
         password: data.password
@@ -130,9 +129,8 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300 ${
-              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className={`w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300 ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+              }`}
           >
             {isSubmitting ? "Signing Up..." : "Sign Up"}
           </button>
