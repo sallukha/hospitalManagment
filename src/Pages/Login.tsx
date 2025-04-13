@@ -3,23 +3,32 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
+
 interface IFormInput {
   email: string;
   password: string;
 }
+
 const Login = ({ setIsAuthenticated }: { setIsAuthenticated: (isAuthenticated: boolean) => void }) => {
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
-      const res = await axios.post("https://node-backend3-f4vr.vercel.app/log_in", data);
+      const res = await axios.post(
+        "https://node-backend3-f4vr.vercel.app/login",
+        data,
+        {
+          withCredentials: true, // ✅ Important: To allow cookies/auth with CORS
+        }
+      );
       console.log(res.data);
       setIsAuthenticated(true);
       navigate("/");
       toast.success('Login successful!');
-    } catch (error) {
+    } catch (error: any) {
       console.error("Login error:", error);
+      toast.error(error?.response?.data?.message || "Login failed!");
     }
   };
 
