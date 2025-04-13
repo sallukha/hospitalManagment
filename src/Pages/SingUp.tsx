@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+
 import { FaHandHoldingMedical } from "react-icons/fa";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 interface IFormInput {
@@ -14,6 +15,7 @@ interface SignUpProps {
 }
 const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
   const [apiError, setApiError] = useState("");
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -29,17 +31,21 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
     }
 
     try {
-      const res = await axios.post("https://node-backend3-f4vr.vercel.app/signup", {
+      const res = await axios.post("https://node-backend3.vercel.app/signup", {
         fullName: data.fullName,
         email: data.email,
         password: data.password
-      }, {
-        withCredentials: true, // ✅ Important: To allow cookies/auth with CORS
-      });
+      },
+
+        // {
+        //   withCredentials: true, // ✅ Important: To allow cookies/auth with CORS
+        // }
+      );
 
       console.log(res.data);
       setIsAuthenticated(true);
-      reset(); // Clear form
+      navigate("/");
+      reset()
     } catch (error: any) {
       setApiError(
         error.response?.data?.message || "Something went wrong during sign up"
