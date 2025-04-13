@@ -146,5 +146,4 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
     </div>
   );
 };
-
 export default SignUp;
