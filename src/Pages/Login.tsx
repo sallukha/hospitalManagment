@@ -8,55 +8,72 @@ interface IFormInput {
   email: string;
   password: string;
 }
-
 const Login = ({ setIsAuthenticated }: { setIsAuthenticated: (isAuthenticated: boolean) => void }) => {
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
-
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
-      const res = await axios.post("https://node-backend3-f4vr.vercel.app/log_in", data);
+      const res = await axios.post("https://node-backend3-f4vr.vercel.app/login", data);
       console.log(res.data);
       setIsAuthenticated(true);
       navigate("/");
       toast.success('Login successful!');
-    } catch (error: any) {
+    } catch (error) {
       console.error("Login error:", error);
-      toast.error(error?.response?.data?.message || "Login failed!");
     }
   };
-
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-2xl shadow-lg w-96">
         <FaHandHoldingMedical className="text-5xl text-cyan-800 mx-auto mb-4" />
-        <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">MEDICARE</h2>
+        <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">
+          MEDICARE
+        </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
-            <label className="block text-gray-600 text-sm font-medium mb-2">Email</label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">
+              Email
+            </label>
             <input
               {...register("email", { required: "Email is required" })}
               type="email"
               className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               placeholder="Enter your email"
             />
-            {errors.email && <span className="text-red-700 text-sm">{errors.email.message}</span>}
+            {errors.email && (
+              <span className="text-red-700 text-sm">
+                {errors.email.message}
+              </span>
+            )}
           </div>
           <div className="mb-4">
-            <label className="block text-gray-600 text-sm font-medium mb-2">Password</label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">
+              Password
+            </label>
             <input
               {...register("password", { required: "Password is required" })}
               type="password"
               className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               placeholder="Enter your password"
             />
-            {errors.password && <span className="text-red-700 text-sm">{errors.password.message}</span>}
+            {errors.password && (
+              <span className="text-red-700 text-sm">
+                {errors.password.message}
+              </span>
+            )}
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300"
+            disabled={isSubmitting}
+            className={`w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300 ${
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            Login
+            {isSubmitting ? "Logging in..." : "Login"}
           </button>
         </form>
         <p className="text-gray-500 text-sm text-center mt-4">
@@ -69,5 +86,4 @@ const Login = ({ setIsAuthenticated }: { setIsAuthenticated: (isAuthenticated: b
     </div>
   );
 };
-
 export default Login;
