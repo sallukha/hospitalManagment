@@ -29,7 +29,7 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
     }
 
     try {
-      const res = await axios.post("https://node-backend3-f4vr.vercel.app/sign_up", {
+      const res = await axios.post("https://node-backend3-f4vr.vercel.app/signup", {
         fullName: data.fullName,
         email: data.email,
         password: data.password
