@@ -29,9 +29,8 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
       setApiError("Passwords do not match");
       return;
     }
-
     try {
-      const res = await axios.post("https://node-backend3.vercel.app/signup", {
+      const res = await axios.post("https://node-backend3-f4vr.vercel.app/sign_up", {
         fullName: data.fullName,
         email: data.email,
         password: data.password

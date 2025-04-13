@@ -15,13 +15,7 @@ const Login = ({ setIsAuthenticated }: { setIsAuthenticated: (isAuthenticated: b
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
-      const res = await axios.post(
-        "https://node-backend3.vercel.app/login",
-        data,
-        // {
-        //   withCredentials: true, // ✅ Important: To allow cookies/auth with CORS
-        // }
-      );
+      const res = await axios.post("https://node-backend3-f4vr.vercel.app/log_in", data);
       console.log(res.data);
       setIsAuthenticated(true);
       navigate("/");

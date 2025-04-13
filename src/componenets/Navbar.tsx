@@ -44,7 +44,6 @@ const Navbar = () => {
                     <li className="hover:text-cyan-600 transition duration-300">
                         <Link to="/contect">CONTACT</Link>
                     </li>
-                    
                     <li className="hover:text-cyan-600 transition duration-300">
                         <Link to="/login"></Link>
                     </li>
@@ -86,7 +85,6 @@ const Navbar = () => {
                     <li className="hover:text-cyan-600 transition duration-300">
                         <Link to="/contect">CONTACT</Link>
                     </li>
-                
                 </ul>
             </div>
         </nav>
