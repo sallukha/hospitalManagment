@@ -33,6 +33,8 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
         fullName: data.fullName,
         email: data.email,
         password: data.password
+      }, {
+        withCredentials: true, // ✅ Important: To allow cookies/auth with CORS
       });
 
       console.log(res.data);
@@ -130,9 +132,8 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300 ${
-              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className={`w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300 ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+              }`}
           >
             {isSubmitting ? "Signing Up..." : "Sign Up"}
           </button>
