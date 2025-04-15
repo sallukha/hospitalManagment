@@ -12,7 +12,7 @@ const LabsTestForm: React.FC = () => {
     const [isRazorpayLoaded, setIsRazorpayLoaded] = useState<boolean>(false);
     const [selectedTests, setSelectedTests] = useState<string[]>([]);
     const [totalPrice, setTotalPrice] = useState<number>(0);
-    const { name, setName  , age, setAge , gender, setGender,  contact, setContact, saveInputRecord}=useGlobalContext()
+    const { name, setName  , age, setAge , gender, setGender,  contact, setContact,  resetFields}=useGlobalContext()
     // Test Prices
     const testPrices: Record<string, number> = {
         "CBC": 500, "LFT": 700, "Lipid Profile": 1000, "TFT": 800,
@@ -165,7 +165,7 @@ const LabsTestForm: React.FC = () => {
                     {isProcessing ? "Processing..." : "Submit & Pay"}
                 </button>
             </form>
-            <button className="" onClick={saveInputRecord}>save</button>
+           
         </div>
     );
 };
