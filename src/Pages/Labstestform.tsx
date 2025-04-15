@@ -164,8 +164,11 @@ const LabsTestForm: React.FC = () => {
                 >
                     {isProcessing ? "Processing..." : "Submit & Pay"}
                 </button>
+
+                <button className="w-full bg-blue-600 rounded text-white my-4 p-2 hover:bg-gray-500">save data</button>
             </form>
-           
+
+             
         </div>
     );
 };

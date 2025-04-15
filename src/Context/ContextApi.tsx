@@ -17,9 +17,7 @@ interface GlobalContextType {
     setPrice: React.Dispatch<React.SetStateAction<number>>;
     resetFields: () => void;
 }
-
 const Context = createContext<GlobalContextType | null>(null);
-
 export const ContextProvider = ({ children }: { children: ReactNode }) => {
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [name, setName] = useState<string>("");
