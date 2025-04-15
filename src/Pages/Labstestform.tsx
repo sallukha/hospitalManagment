@@ -7,7 +7,6 @@ interface Order {
   amount: number;
   currency: string;
 }
-
 const LabsTestForm: React.FC = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedTests, setSelectedTests] = useState<string[]>([]);
