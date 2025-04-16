@@ -26,6 +26,9 @@ const PatientRecords: React.FC = () => {
                     { email, password },
                     { withCredentials: true } // ✅ super important
                 );
+                if (res.data && res.data.patients) {
+                    setPatients(res.data.patients);
+                }
             } catch (error) {
                 console.error("Error fetching patients:", error);
             }
