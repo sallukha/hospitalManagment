@@ -17,13 +17,7 @@ const Login = ({ setIsAuthenticated }: { setIsAuthenticated: (isAuthenticated: b
   } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
-      const { email, password } = data;
-      const res = await  axios.post("https://your-backend-domain.com/login", {
-        email,
-        password
-      }, {
-        // withCredentials: true // ✅ VERY IMPORTANT
-      });
+      const res = await axios.post("https://node-backend3-f4vr.vercel.app/login", data);
       console.log(res.data);
       setIsAuthenticated(true);
       navigate("/");
