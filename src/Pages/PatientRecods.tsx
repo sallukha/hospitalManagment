@@ -19,16 +19,8 @@ const PatientRecords: React.FC = () => {
     useEffect(() => {
         const fetchPatients = async () => {
             try {
-                const email = "example@example.com"; // Replace with actual email
-                const password = "yourpassword"; // Replace with actual password
-                const res = await axios.post(
-                    'https://your-vercel-backend.vercel.app/login',
-                    { email, password },
-                    { withCredentials: true } // ✅ super important
-                );
-                if (res.data && res.data.patients) {
-                    setPatients(res.data.patients);
-                }
+                const res = await axios.get("https://node-backend3-bt7q.vercel.app/patient");
+                setPatients(res.data);
             } catch (error) {
                 console.error("Error fetching patients:", error);
             }
