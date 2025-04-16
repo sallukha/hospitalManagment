@@ -1,18 +1,20 @@
-
 import { FaHandHoldingMedical } from "react-icons/fa";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+
 interface IFormInput {
   fullName: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
+
 interface SignUpProps {
   setIsAuthenticated: (isAuthenticated: boolean) => void;
 }
+
 const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
   const [apiError, setApiError] = useState("");
   const navigate = useNavigate();
@@ -25,26 +27,26 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     setApiError(""); // Reset previous errors
+
     if (data.password !== data.confirmPassword) {
       setApiError("Passwords do not match");
       return;
     }
-    try {
-      const res = await axios.post("https://node-backend3-f4vr.vercel.app/sign_up", {
-        fullName: data.fullName,
-        email: data.email,
-        password: data.password
-      },
 
-        // {
-        //   withCredentials: true, // ✅ Important: To allow cookies/auth with CORS
-        // }
+    try {
+      const res = await axios.post(
+        "https://node-backend3-f4vr.vercel.app/api/sign_up", // ✅ Fixed URL
+        {
+          fullName: data.fullName,
+          email: data.email,
+          password: data.password
+        }
       );
 
-      console.log(res.data);
+      console.log("Signup successful:", res.data);
       setIsAuthenticated(true);
       navigate("/");
-      reset()
+      reset();
     } catch (error: any) {
       setApiError(
         error.response?.data?.message || "Something went wrong during sign up"
@@ -78,7 +80,9 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
               placeholder="Enter your full name"
             />
             {errors.fullName && (
-              <span className="text-red-700 text-sm">{errors.fullName.message}</span>
+              <span className="text-red-700 text-sm">
+                {errors.fullName.message}
+              </span>
             )}
           </div>
 
@@ -94,7 +98,9 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
               placeholder="Enter your email"
             />
             {errors.email && (
-              <span className="text-red-700 text-sm">{errors.email.message}</span>
+              <span className="text-red-700 text-sm">
+                {errors.email.message}
+              </span>
             )}
           </div>
 
@@ -110,7 +116,9 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
               placeholder="Enter your password"
             />
             {errors.password && (
-              <span className="text-red-700 text-sm">{errors.password.message}</span>
+              <span className="text-red-700 text-sm">
+                {errors.password.message}
+              </span>
             )}
           </div>
 
@@ -137,8 +145,9 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300 ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""
-              }`}
+            className={`w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300 ${
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
             {isSubmitting ? "Signing Up..." : "Sign Up"}
           </button>
@@ -154,4 +163,5 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
     </div>
   );
 };
+
 export default SignUp;
