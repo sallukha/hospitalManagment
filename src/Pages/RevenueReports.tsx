@@ -18,7 +18,7 @@ const RevenueReports: React.FC = () => {
  
   const submitReport: SubmitHandler<PatientForm> = async (data) => {
     try {
-      const res = await axios.post("https://node-backend3-bt7q.vercel.app/patient", data);  // ✅ FIXED URL
+      const res = await axios.post("http://localhost:4000/patient", data);  // ✅ FIXED URL
       console.log("Report submitted successfully:", res.data);
       alert("Report submitted successfully");
       reset(); // Clear form

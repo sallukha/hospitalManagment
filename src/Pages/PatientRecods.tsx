@@ -19,7 +19,7 @@ const PatientRecords: React.FC = () => {
     useEffect(() => {
         const fetchPatients = async () => {
             try {
-                const res = await axios.get("https://node-backend3-bt7q.vercel.app/patient");
+                const res = await axios.get("http://localhost:4000/patient");
                 setPatients(res.data);
             } catch (error) {
                 console.error("Error fetching patients:", error);
