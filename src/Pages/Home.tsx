@@ -47,7 +47,7 @@ const Home = () => {
                             <div className="flex justify-center">
                                 <FaChartLine className="text-green-500 text-4xl mb-4" />
                             </div>
-                            <h3 className="text-xl font-semibold text-gray-900 text-center mt-4">Daily/Monthly Revenue Reports</h3>
+                            <h3 className="text-xl font-semibold text-gray-900 text-center mt-4">Inpatient Admission Form</h3>
                             <p className="text-gray-600 text-sm md:text-base mt-2 text-center">
                                 Get insights into daily and monthly revenue with financial reports, helping you track hospital earnings and expenses efficiently.
                             </p>

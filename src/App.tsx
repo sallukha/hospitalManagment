@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useState, Suspense, lazy } from "react";
 import { Slide } from "react-toastify/unstyled";
 import { ToastContainer } from "react-toastify";
+// Removed redundant import for PatientRecods
 const Navbar = lazy(() => import("./componenets/Navbar"));
 const Footer = lazy(() => import("./componenets/Footer"));
 const About = lazy(() => import("./Pages/About"));
@@ -15,7 +16,7 @@ const Labs = lazy(() => import("./Pages/Labs"));
 const LabsTestForm = lazy(() => import("./Pages/Labstestform"));
 const Login = lazy(() => import("./Pages/Login"));
 const SignUp = lazy(() => import("./Pages/SingUp"));
-// const PatientRecods = lazy(() => import("./Pages/PatientRecods"));
+const PatientRecods = lazy(() => import("./Pages/PatientRecods"));
 const RevenueReports = lazy(() => import("./Pages/RevenueReports"));
 const StaffPerformanceReports = lazy(() => import("./Pages/StaffPerfomens"));
 const App = () => {
@@ -66,7 +67,7 @@ const ProtectedRoutes = () => {
         <Route path="/petition" element={<Petition />} />
         <Route path="/labs" element={<Labs />} />
         <Route path="/labTestForm" element={<LabsTestForm />} />
-        {/* <Route path="/PatientRecods" element={<PatientRecods />} /> */}
+        <Route path="/PatientRecods" element={<PatientRecods />} />
         <Route path="/revenueReports" element={<RevenueReports />} />
         <Route path="/Staff" element={<StaffPerformanceReports />} />
         <Route path="*" element={<Navigate to="/" />} />
