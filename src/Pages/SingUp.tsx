@@ -36,9 +36,9 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
         password: data.password
       },
 
-        {
-          withCredentials: true, // ✅ Important: To allow cookies/auth with CORS
-        }
+        // {
+        //   withCredentials: true, // ✅ Important: To allow cookies/auth with CORS
+        // }
       );
 
       console.log(res.data);

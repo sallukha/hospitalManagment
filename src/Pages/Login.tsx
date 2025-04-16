@@ -22,7 +22,7 @@ const Login = ({ setIsAuthenticated }: { setIsAuthenticated: (isAuthenticated: b
         email,
         password
       }, {
-        withCredentials: true // ✅ VERY IMPORTANT
+        // withCredentials: true // ✅ VERY IMPORTANT
       });
       console.log(res.data);
       setIsAuthenticated(true);
