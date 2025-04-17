@@ -18,21 +18,17 @@ const RevenueReports: React.FC = () => {
  
   const submitReport: SubmitHandler<PatientForm> = async (data) => {
     try {
-      const res = await axios.post(
-        "https://node-backend3-bt7q.vercel.app/patient",
-        data,
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axios.post("http://localhost:4000/patient", data);  // ✅ FIXED URL
       console.log("Report submitted successfully:", res.data);
       alert("Report submitted successfully");
       reset(); // Clear form
+      
     } catch (error) {
       console.log("API error:", error);
       alert("Failed to submit report");
     }
   };
+
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10">
       <h2 className="text-2xl font-semibold text-center mb-6">Patient Records</h2>
