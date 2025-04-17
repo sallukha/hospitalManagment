@@ -30,41 +30,45 @@ const PatientRecords: React.FC = () => {
     }, []);
 
     return (
-        <div className="max-w-5xl mx-auto mt-10 p-4 bg-white rounded shadow">
-            <h2 className="text-2xl font-bold mb-6 text-center">Patient Records</h2>
-            {patients.length === 0 ? (
-                <p className="text-center text-gray-500">No patients found.</p>
-            ) : (
-                <table className="w-full table-auto border">
-                    <thead className="bg-gray-100">
-                        <tr>
-                            <th className="px-4 py-2 border">Name</th>
-                            <th className="px-4 py-2 border">Age</th>
-                            <th className="px-4 py-2 border">Gender</th>
-                            <th className="px-4 py-2 border">Contact</th>
-                            <th className="px-4 py-2 border">Report</th>
-                            <th className="px-4 py-2 border">Payment</th>
-                            <th className="px-4 py-2 border">From</th>
-                            <th className="px-4 py-2 border">To</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {patients.map((patient) => (
-                            <tr key={patient._id}>
-                                <td className="px-4 py-2 border">{patient.name}</td>
-                                <td className="px-4 py-2 border">{patient.age}</td>
-                                <td className="px-4 py-2 border">{patient.gender}</td>
-                                <td className="px-4 py-2 border">{patient.contactNumber}</td>
-                                <td className="px-4 py-2 border">{patient.reportType}</td>
-                                <td className="px-4 py-2 border">{patient.paymentStatus}</td>
-                                <td className="px-4 py-2 border">{patient.fromDate}</td>
-                                <td className="px-4 py-2 border">{patient.toDate}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            )}
-        </div>
+        <div className="max-w-6xl mx-auto mt-10 p-4 bg-white rounded-xl shadow-lg overflow-x-auto">
+  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-800">Patient Records</h2>
+
+  {patients.length === 0 ? (
+    <p className="text-center text-gray-500 text-sm md:text-base">No patients found.</p>
+  ) : (
+    <div className="w-full overflow-x-auto">
+      <table className="min-w-full table-auto border-collapse border border-gray-200">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="px-4 py-2 border text-sm md:text-base">Name</th>
+            <th className="px-4 py-2 border text-sm md:text-base">Age</th>
+            <th className="px-4 py-2 border text-sm md:text-base">Gender</th>
+            <th className="px-4 py-2 border text-sm md:text-base">Contact</th>
+            <th className="px-4 py-2 border text-sm md:text-base">Report</th>
+            <th className="px-4 py-2 border text-sm md:text-base">Payment</th>
+            <th className="px-4 py-2 border text-sm md:text-base">From</th>
+            <th className="px-4 py-2 border text-sm md:text-base">To</th>
+          </tr>
+        </thead>
+        <tbody>
+          {patients.map((patient) => (
+            <tr key={patient._id} className="hover:bg-gray-50 transition">
+              <td className="px-4 py-2 border text-xs md:text-sm">{patient.name}</td>
+              <td className="px-4 py-2 border text-xs md:text-sm">{patient.age}</td>
+              <td className="px-4 py-2 border text-xs md:text-sm">{patient.gender}</td>
+              <td className="px-4 py-2 border text-xs md:text-sm">{patient.contactNumber}</td>
+              <td className="px-4 py-2 border text-xs md:text-sm">{patient.reportType}</td>
+              <td className="px-4 py-2 border text-xs md:text-sm">{patient.paymentStatus}</td>
+              <td className="px-4 py-2 border text-xs md:text-sm">{patient.fromDate}</td>
+              <td className="px-4 py-2 border text-xs md:text-sm">{patient.toDate}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+</div>
+
     );
 };
 
