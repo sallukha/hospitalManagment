@@ -15,11 +15,13 @@ type Patient = {
 
 const PatientRecords: React.FC = () => {
     const [patients, setPatients] = useState<Patient[]>([]);
-[]
+    []
     useEffect(() => {
         const fetchPatients = async () => {
             try {
-                const res = await axios.get("https://node-backend3-bt7q.vercel.app//patient");
+                const res = await axios.get("https://node-backend3-bt7q.vercel.app//patient", {
+                    withCredentials: true,
+                });
                 setPatients(res.data);
             } catch (error) {
                 console.error("Error fetching patients:", error);
