@@ -6,7 +6,7 @@ type Patient = {
     name: string;
     age: number;
     gender: string;
-    contactNumber?: string;
+    Contact?: string;
     reportType: string;
     paymentStatus: string;
     fromDate: string;
@@ -56,7 +56,7 @@ const PatientRecords: React.FC = () => {
               <td className="px-4 py-2 border text-xs md:text-sm">{patient.name}</td>
               <td className="px-4 py-2 border text-xs md:text-sm">{patient.age}</td>
               <td className="px-4 py-2 border text-xs md:text-sm">{patient.gender}</td>
-              <td className="px-4 py-2 border text-xs md:text-sm">{patient.contactNumber}</td>
+              <td className="px-4 py-2 border text-xs md:text-sm">{patient. Contact}</td>
               <td className="px-4 py-2 border text-xs md:text-sm">{patient.reportType}</td>
               <td className="px-4 py-2 border text-xs md:text-sm">{patient.paymentStatus}</td>
               <td className="px-4 py-2 border text-xs md:text-sm">{patient.fromDate}</td>
