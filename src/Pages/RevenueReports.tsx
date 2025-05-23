@@ -12,7 +12,6 @@ type PatientForm = {
   fromDate: string;
   toDate: string;
 };
-
 const RevenueReports: React.FC = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<PatientForm>();
 

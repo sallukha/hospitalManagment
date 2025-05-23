@@ -15,7 +15,11 @@ interface GlobalContextType {
     setTest: React.Dispatch<React.SetStateAction<string>>;
     price: number;
     setPrice: React.Dispatch<React.SetStateAction<number>>;
+    isAthenticated: boolean;
+    setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
     resetFields: () => void;
+    login: () => void;
+    logout: () => void;
 }
 const Context = createContext<GlobalContextType | null>(null);
 export const ContextProvider = ({ children }: { children: ReactNode }) => {
@@ -26,6 +30,10 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
     const [contact, setContact] = useState<string>("");
     const [test, setTest] = useState<string>("");
     const [price, setPrice] = useState<number>(0);
+    const [isAthenticated, setIsAuthenticated] = useState<boolean>(false);
+
+    const login = () => setIsAuthenticated(true);
+    const logout = () => setIsAuthenticated(false);
     const resetFields = () => {
         setName("");
         setAge("");
@@ -51,7 +59,11 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
                 setTest,
                 price,
                 setPrice,
-                resetFields
+                resetFields,
+                isAthenticated,
+                setIsAuthenticated,
+                login,
+                logout
             }}
         >
             {children}
