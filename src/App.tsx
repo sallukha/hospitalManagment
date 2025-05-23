@@ -1,4 +1,4 @@
- import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useState, Suspense, lazy } from "react";
 import { Slide } from "react-toastify/unstyled";
 import { ToastContainer } from "react-toastify";
@@ -68,7 +68,7 @@ const MainRoutes = ({ isAuthanticated, setIsAuthenticated }: any) => {
   );
 };
 
-// Protected Routes
+ 
 const ProtectedRoutes = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
