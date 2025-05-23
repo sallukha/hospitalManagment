@@ -1,8 +1,9 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+ import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useState, Suspense, lazy } from "react";
 import { Slide } from "react-toastify/unstyled";
 import { ToastContainer } from "react-toastify";
-// Removed redundant import for PatientRecods
+
+// Lazy Imports
 const Navbar = lazy(() => import("./componenets/Navbar"));
 const Footer = lazy(() => import("./componenets/Footer"));
 const About = lazy(() => import("./Pages/About"));
@@ -19,26 +20,39 @@ const SignUp = lazy(() => import("./Pages/SingUp"));
 const PatientRecods = lazy(() => import("./Pages/PatientRecods"));
 const RevenueReports = lazy(() => import("./Pages/RevenueReports"));
 const StaffPerformanceReports = lazy(() => import("./Pages/StaffPerfomens"));
+
+// Main App Component
 const App = () => {
-  const [isAuthanticated, setIsAuthenticated] = useState<boolean | any>(false);
+  const [isAuthanticated, setIsAuthenticated] = useState<boolean>(false);
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>
-        {isAuthanticated && <Navbar />}
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-          <Route path="/signup" element={<SignUp setIsAuthenticated={setIsAuthenticated} />} />
+      <MainRoutes isAuthanticated={isAuthanticated} setIsAuthenticated={setIsAuthenticated} />
+    </BrowserRouter>
+  );
+};
 
-          {/* Protected Routes */}
-          <Route
-            path="/*"
-            element={isAuthanticated ? <ProtectedRoutes /> : <Navigate to="/login" />}
-          />
-        </Routes>
-        {isAuthanticated && <Footer />}
-      </Suspense>
-      <ToastContainer className="  flex text-sm justify-center items-center "
+const MainRoutes = ({ isAuthanticated, setIsAuthenticated }: any) => {
+  const location = useLocation();
+  const hideNavbarRoutes = ["/login", "/signup"];
+  const shouldHideNav = hideNavbarRoutes.includes(location.pathname);
+
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      {!shouldHideNav && isAuthanticated && <Navbar />}
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route path="/signup" element={<SignUp setIsAuthenticated={setIsAuthenticated} />} />
+
+        {/* Protected Routes */}
+        <Route
+          path="/*"
+          element={isAuthanticated ? <ProtectedRoutes /> : <Navigate to="/login" />}
+        />
+      </Routes>
+      {!shouldHideNav && isAuthanticated && <Footer />}
+      <ToastContainer
+        className="flex text-sm justify-center items-center"
         position="top-right"
         autoClose={3000}
         hideProgressBar
@@ -50,10 +64,11 @@ const App = () => {
         pauseOnHover
         transition={Slide}
       />
-    </BrowserRouter>
+    </Suspense>
   );
 };
-// Separate component for Protected Routes
+
+// Protected Routes
 const ProtectedRoutes = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
