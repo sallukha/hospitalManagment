@@ -1,28 +1,11 @@
 import { FaHandHoldingMedical } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useGlobalContext } from "../Context/ContextApi";
-import { useNavigate } from "react-router-dom";
 const Navbar = () => {
-    
-   
     const [isOpen, setIsOpen] = useState(false);
     const handleClick = () => {
         setIsOpen(!isOpen);
     };
-
-
- const { isAthenticated, logout } = useGlobalContext(); // coming from your AuthContext
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();           // 1. update auth state
-    navigate('/login'); // 2. redirect to login page
-  };
-
-  // Hide Navbar if not logged in
-  if (!isAthenticated) return null;
-
     return (
         <nav className="bg-white shadow-md p-4">
             <div className="container mx-auto flex justify-between items-center">
@@ -107,7 +90,7 @@ const Navbar = () => {
 
                     </li>
                     <li className="hover:text-cyan-600 transition duration-300">
-                        <button className="bg-blue-600 p-2 rounded" onClick={handleLogout}>LOG OUT</button>
+                        <button className="bg-blue-600 p-2 rounded"><Link to="/login">LOG OUT</Link></button>
                     </li>
                 </ul>
             </div>
