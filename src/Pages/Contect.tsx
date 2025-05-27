@@ -2,6 +2,13 @@ import { useState } from "react";
 
 const Contact = () => {
   const [isOpen, setIsOpen] = useState(false)
+    
+  const handleClose =()=>{
+    setIsOpen(false);
+    window.location.reload(); // Reload the page to reset the form
+  }
+
+
   return (
     <>
       <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6">
@@ -28,21 +35,15 @@ const Contact = () => {
           </form>
         </div>
       </div>
-
-
       {isOpen && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded shadow-lg w-full max-w-md">
             <h2 className="text-xl font-semibold mb-4">Thank You!</h2>
             <p className="text-gray-700">Your message has been sent successfully. We will get back to you soon.</p>
-            <button onClick={() => setIsOpen(!isOpen)} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Close</button>
+            <button onClick={handleClose} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Close</button>
           </div>
         </div>
-    
-
       )}
-
-
     </>
   );
 };
