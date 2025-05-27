@@ -2,8 +2,6 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-route
 import { useState, Suspense, lazy } from "react";
 import { Slide } from "react-toastify/unstyled";
 import { ToastContainer } from "react-toastify";
-
-// Lazy Imports
 const Navbar = lazy(() => import("./componenets/Navbar"));
 const Footer = lazy(() => import("./componenets/Footer"));
 const About = lazy(() => import("./Pages/About"));
@@ -30,7 +28,6 @@ const App = () => {
     </BrowserRouter>
   );
 };
-
 const MainRoutes = ({ isAuthanticated, setIsAuthenticated }: any) => {
   const location = useLocation();
   const hideNavbarRoutes = ["/login", "/signup"];
@@ -68,7 +65,7 @@ const MainRoutes = ({ isAuthanticated, setIsAuthenticated }: any) => {
   );
 };
 
- 
+
 const ProtectedRoutes = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>

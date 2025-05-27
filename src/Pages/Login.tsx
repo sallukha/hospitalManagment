@@ -3,7 +3,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
-
 interface IFormInput {
   email: string;
   password: string;
@@ -69,9 +68,8 @@ const Login = ({ setIsAuthenticated }: { setIsAuthenticated: (isAuthenticated: b
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300 ${
-              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className={`w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300 ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+              }`}
           >
             {isSubmitting ? "Logging in..." : "Login"}
           </button>

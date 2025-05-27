@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+ 
 type Patient = {
     _id: string;
     name: string;
@@ -48,6 +48,8 @@ const PatientRecords: React.FC = () => {
             <th className="px-4 py-2 border text-sm md:text-base">Payment</th>
             <th className="px-4 py-2 border text-sm md:text-base">From</th>
             <th className="px-4 py-2 border text-sm md:text-base">To</th>
+              
+
           </tr>
         </thead>
         <tbody>
@@ -60,7 +62,9 @@ const PatientRecords: React.FC = () => {
               <td className="px-4 py-2 border text-xs md:text-sm">{patient.reportType}</td>
               <td className="px-4 py-2 border text-xs md:text-sm">{patient.paymentStatus}</td>
               <td className="px-4 py-2 border text-xs md:text-sm">{patient.fromDate}</td>
-              <td className="px-4 py-2 border text-xs md:text-sm">{patient.toDate}</td>
+              <td className="px-4 py-2 border text-xs md:text-sm">{patient.toDate}</td> 
+              <td className="px-4 py-2 border text-xs md:text-sm">
+              </td>
             </tr>
           ))}
         </tbody>

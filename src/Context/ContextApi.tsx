@@ -53,7 +53,6 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
                 price,
                 setPrice,
                 resetFields,
-
             }}
         >
             {children}
