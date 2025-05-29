@@ -11,12 +11,6 @@ const Petition = () => {
     e.preventDefault();
     setIsOpen(true);
   };
-
-  
-
-
-
-
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
       <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
@@ -118,7 +112,7 @@ const Petition = () => {
         <div className="fixed inset-0 flex items-center justify-center bg-gray-400 bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg text-center">
             <h1 className="text-xl font-bold text-gray-800">
-              Your Appointment Has Been Booked!
+              Your Appointment  Booked! 
             </h1>
             <p className="mt-2 text-gray-700">
               <strong>Doctor:</strong> {selectedDoctor}
