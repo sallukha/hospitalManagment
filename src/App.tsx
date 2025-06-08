@@ -1,4 +1,3 @@
- 
 import AllRoutes from "./routes/AllRoutes"
  const App = () => {
    return (
@@ -7,4 +6,5 @@ import AllRoutes from "./routes/AllRoutes"
      </div>
    )
  }
+ 
  export default App
