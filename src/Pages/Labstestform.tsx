@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useGlobalContext } from "../Context/ContextApi";
+import { useGlobalContext } from "../hooks/ContextApi";
 
 interface Order {
   id: string;

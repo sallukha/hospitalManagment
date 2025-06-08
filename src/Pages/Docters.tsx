@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useGlobalContext } from "../Context/ContextApi";
+import { useGlobalContext } from "../hooks/ContextApi";
 import { CiSearch } from "react-icons/ci";
 import { docters as doctorsData } from "../json/Docter";
 interface Doctor {
