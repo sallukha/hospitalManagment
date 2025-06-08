@@ -6,5 +6,4 @@ import AllRoutes from "./routes/AllRoutes"
      </div>
    )
  }
- 
  export default App
