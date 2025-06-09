@@ -20,7 +20,7 @@ const PatientRecords: React.FC = () => {
   // Fetch all patients
   const fetchPatients = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/patient");
+      const res = await axios.get("https://node-backend3-f4vr.vercel.app/patient");
       setPatients(res.data);
     } catch (error) {
       console.error("Error fetching patients:", error);
@@ -39,7 +39,7 @@ const PatientRecords: React.FC = () => {
   const handleUpdate = async () => {
     if (!editingPatient) return;
     try {
-      await axios.put(`http://localhost:4000/patient/${editingPatient._id}`, formData);
+      await axios.put(`https://node-backend3-f4vr.vercel.app/patient/${editingPatient._id}`, formData);
       setEditingPatient(null);
       setFormData({});
       await fetchPatients();
