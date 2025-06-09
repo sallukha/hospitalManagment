@@ -101,89 +101,97 @@ const PatientRecords: React.FC = () => {
       )}
 
       {/* Edit Form */}
-      {editingPatient && (
-        <div className="mt-6 bg-gray-100 p-6 rounded shadow">
-          <h3 className="text-xl font-semibold mb-4">Edit Patient Details</h3>
-          <div className="grid grid-cols-2 gap-4">
-            <input
-              name="name"
-              value={formData.name || ""}
-              onChange={handleChange}
-              placeholder="Name"
-              className="border p-2"
-            />
-            <input
-              name="age"
-              type="number"
-              value={formData.age || ""}
-              onChange={handleChange}
-              placeholder="Age"
-              className="border p-2"
-            />
-            <input
-              name="gender"
-              value={formData.gender || ""}
-              onChange={handleChange}
-              placeholder="Gender"
-              className="border p-2"
-            />
-            <input
-              name="contactNumber"
-              value={formData.contactNumber || ""}
-              onChange={handleChange}
-              placeholder="Contact Number"
-              className="border p-2"
-            />
-            <input
-              name="reportType"
-              value={formData.reportType || ""}
-              onChange={handleChange}
-              placeholder="Report Type"
-              className="border p-2"
-            />
-            <input
-              name="paymentStatus"
-              value={formData.paymentStatus || ""}
-              onChange={handleChange}
-              placeholder="Payment Status"
-              className="border p-2"
-            />
-            <input
-              name="fromDate"
-              value={formData.fromDate || ""}
-              onChange={handleChange}
-              placeholder="From Date"
-              className="border p-2"
-              type="date"
-            />
-            <input
-              name="toDate"
-              value={formData.toDate || ""}
-              onChange={handleChange}
-              placeholder="To Date"
-              className="border p-2"
-              type="date"
-            />
-          </div>
-          <div className="mt-4">
-            <button
-              onClick={handleUpdate}
-              className="bg-green-600 text-white px-4 py-2 rounded mr-2"
-            >
-              Save
-            </button>
-            <button
-              onClick={() => {
-                setEditingPatient(null);
-                setFormData({});
-              }}
-              className="bg-red-500 text-white px-4 py-2 rounded"
-            >
-              Cancel
-            </button>
-          </div>
+ {editingPatient && (
+  <>
+    {/* Background Overlay */}
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+      {/* Modal */}
+      <div className="bg-white rounded-lg shadow-lg w-full max-w-2xl p-6 relative">
+        <h3 className="text-xl font-semibold mb-4">Edit Patient Details</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input
+            name="name"
+            value={formData.name || ""}
+            onChange={handleChange}
+            placeholder="Name"
+            className="border p-2 rounded"
+          />
+          <input
+            name="age"
+            type="number"
+            value={formData.age || ""}
+            onChange={handleChange}
+            placeholder="Age"
+            className="border p-2 rounded"
+          />
+          <input
+            name="gender"
+            value={formData.gender || ""}
+            onChange={handleChange}
+            placeholder="Gender"
+            className="border p-2 rounded"
+          />
+          <input
+            name="contactNumber"
+            value={formData.contactNumber || ""}
+            onChange={handleChange}
+            placeholder="Contact Number"
+            className="border p-2 rounded"
+          />
+          <input
+            name="reportType"
+            value={formData.reportType || ""}
+            onChange={handleChange}
+            placeholder="Report Type"
+            className="border p-2 rounded"
+          />
+          <input
+            name="paymentStatus"
+            value={formData.paymentStatus || ""}
+            onChange={handleChange}
+            placeholder="Payment Status"
+            className="border p-2 rounded"
+          />
+          <input
+            name="fromDate"
+            value={formData.fromDate || ""}
+            onChange={handleChange}
+            placeholder="From Date"
+            className="border p-2 rounded"
+            type="date"
+          />
+          <input
+            name="toDate"
+            value={formData.toDate || ""}
+            onChange={handleChange}
+            placeholder="To Date"
+            className="border p-2 rounded"
+            type="date"
+          />
         </div>
-      )}
+
+        {/* Action Buttons */}
+        <div className="mt-6 flex justify-end">
+          <button
+            onClick={handleUpdate}
+            className="bg-green-600 text-white px-4 py-2 rounded mr-2 hover:bg-green-700"
+          >
+            Save
+          </button>
+          <button
+            onClick={() => {
+              setEditingPatient(null);
+              setFormData({});
+            }}
+            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </>
+)}
     </div>
   );
 };
