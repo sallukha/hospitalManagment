@@ -104,7 +104,7 @@ const PatientRecords: React.FC = () => {
  {editingPatient && (
   <>
     {/* Background Overlay */}
-    <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-gray-100 bg-opacity-50 flex justify-center items-center z-50">
       {/* Modal */}
       <div className="bg-white rounded-lg shadow-lg w-full max-w-2xl p-6 relative">
         <h3 className="text-xl font-semibold mb-4">Edit Patient Details</h3>
