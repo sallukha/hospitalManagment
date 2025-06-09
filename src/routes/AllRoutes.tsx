@@ -64,8 +64,6 @@ const MainRoutes = ({ isAuthanticated, setIsAuthenticated }: any) => {
     </Suspense>
   );
 };
-
-
 const ProtectedRoutes = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
