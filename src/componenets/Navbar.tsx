@@ -90,7 +90,10 @@ const Navbar = () => {
 
                     </li>
                     <li className="hover:text-cyan-600 transition duration-300">
-                        <button className="bg-blue-600 p-2 rounded"><Link to="/login">LOG OUT</Link></button>
+                        <div className="flex justify-between ">
+                         <button className="bg-blue-600 p-2 rounded"><Link to="/login">LOG OUT</Link></button>
+                           <button onClick={handleClick} className="bg-blue-600 p-2 rounded"><Link to="/login">X</Link></button>  
+                          </div>
                     </li>
                 </ul>
             </div>
