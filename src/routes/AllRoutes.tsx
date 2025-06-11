@@ -18,8 +18,7 @@ const SignUp = lazy(() => import("../Pages/SingUp"));
 const PatientRecods = lazy(() => import("../Pages/PatientRecods"));
 const RevenueReports = lazy(() => import("../Pages/RevenueReports"));
 const StaffPerformanceReports = lazy(() => import("../Pages/StaffPerfomens"));
-
-// Main App Component
+ 
 const AllRoutes = () => {
   const [isAuthanticated, setIsAuthenticated] = useState<boolean>(false);
   return (
