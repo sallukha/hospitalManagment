@@ -44,7 +44,6 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
       console.error("SignUp error:", error);
     }
   };
-
   return (
     <div className=" p-8  flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-2xl shadow-lg w-96">
