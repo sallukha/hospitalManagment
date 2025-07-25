@@ -39,7 +39,8 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
 
       console.log(res.data);
       setIsAuthenticated(true);
-      reset(); // Clear form
+      navigate("/")
+      reset(); 
     } catch (error: any) {
       setApiError(
         error.response?.data?.message || "Something went wrong during sign up"
