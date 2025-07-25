@@ -1,6 +1,5 @@
- import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-
 type Patient = {
   _id: string;
   name: string;
@@ -11,14 +10,14 @@ type Patient = {
   paymentStatus: string;
   fromDate: string;
   toDate: string;
+  inputRecords:string
 };
-
 const PatientRecords: React.FC = () => {
   const [patients, setPatients] = useState<Patient[]>([]);
   const [editingPatient, setEditingPatient] = useState<Patient | null>(null);
   const [formData, setFormData] = useState<Partial<Patient>>({});
 
-  // Fetch patients
+  
   const fetchPatients = async () => {
     try {
       const res = await axios.get("https://node-backend3-f4vr.vercel.app/patient");
@@ -109,7 +108,7 @@ const PatientRecords: React.FC = () => {
           </table>
         </div>
       )}
-      {/* Edit Modal */}
+  
       {editingPatient && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white w-[95%] sm:w-[80%] md:w-[60%] lg:w-[50%] rounded-lg p-6 shadow-lg relative max-h-[90vh] overflow-y-auto">
@@ -199,5 +198,4 @@ const PatientRecords: React.FC = () => {
     </div>
   );
 };
-
 export default PatientRecords;
