@@ -1,5 +1,4 @@
 import { blogs } from "../json/Blog"
-
 interface Blog {
     title: string;
     description: string;
@@ -7,7 +6,6 @@ interface Blog {
     date: string;
     category: string;
     image: string;
-
 }
 const Blog = () => {
     return (

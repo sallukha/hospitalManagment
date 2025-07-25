@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { FaHeartbeat, FaAmbulance, FaCalendarCheck, FaFileMedical, FaChartLine, FaUserMd } from "react-icons/fa";
-
 const Home = () => {
     return (
         <>
@@ -66,8 +65,6 @@ const Home = () => {
                     </Link>
                 </div>
             </div>
-
-
             {/* Services Section */}
             <div className="bg-cyan-800 py-12 px-4 md:px-12 lg:px-20">
                 <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-8">Our Services</h2>
