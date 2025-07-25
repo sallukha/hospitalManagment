@@ -129,7 +129,6 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
               </span>
             )}
           </div>
-
           <button
             type="submit"
             disabled={isSubmitting}

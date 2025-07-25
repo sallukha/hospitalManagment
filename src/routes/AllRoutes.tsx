@@ -36,11 +36,10 @@ const MainRoutes = ({ isAuthanticated, setIsAuthenticated }: any) => {
     <Suspense fallback={<div>Loading...</div>}>
       {!shouldHideNav && isAuthanticated && <Navbar />}
       <Routes>
-        {/* Public Routes */}
+    
         <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/signup" element={<SignUp setIsAuthenticated={setIsAuthenticated} />} />
 
-        {/* Protected Routes */}
         <Route
           path="/*"
           element={isAuthanticated ? <ProtectedRoutes /> : <Navigate to="/login" />}

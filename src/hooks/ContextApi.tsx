@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, ReactNode } from "react"
-
 interface GlobalContextType {
     searchQuery: string;
     setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
