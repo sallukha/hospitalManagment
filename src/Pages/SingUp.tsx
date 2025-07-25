@@ -24,7 +24,7 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
   } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    setApiError(""); // Reset previous errors
+    setApiError(""); 
     if (data.password !== data.confirmPassword) {
       setApiError("Passwords do not match");
       return;
@@ -39,8 +39,7 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
 
       console.log(res.data);
       setIsAuthenticated(true);
-      navigate("/");
-      reset()
+      reset(); // Clear form
     } catch (error: any) {
       setApiError(
         error.response?.data?.message || "Something went wrong during sign up"
@@ -48,9 +47,8 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
       console.error("SignUp error:", error);
     }
   };
-
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className=" p-8 flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-2xl shadow-lg w-96">
         <FaHandHoldingMedical className="text-5xl text-cyan-800 mx-auto" />
         <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">
@@ -62,7 +60,7 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
         )}
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* Full Name */}
+        
           <div className="mb-4">
             <label className="block text-gray-600 text-sm font-medium mb-2">
               Full Name
@@ -78,7 +76,7 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
             )}
           </div>
 
-          {/* Email */}
+          
           <div className="mb-4">
             <label className="block text-gray-600 text-sm font-medium mb-2">
               Email
@@ -94,7 +92,7 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
             )}
           </div>
 
-          {/* Password */}
+        
           <div className="mb-4">
             <label className="block text-gray-600 text-sm font-medium mb-2">
               Password
@@ -110,7 +108,7 @@ const SignUp: React.FC<SignUpProps> = ({ setIsAuthenticated }) => {
             )}
           </div>
 
-          {/* Confirm Password */}
+           
           <div className="mb-4">
             <label className="block text-gray-600 text-sm font-medium mb-2">
               Confirm Password
